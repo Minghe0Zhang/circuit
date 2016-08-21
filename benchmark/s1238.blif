@@ -1,0 +1,462 @@
+# Benchmark "../DATA/s1238.bench" written by ABC on Fri Sep  9 11:23:41 2011
+.model ../DATA/s1238.bench
+.inputs G0 G1 G2 G3 G4 G5 G6 G7 G8 G9 G10 G11 G12 G13
+.outputs G549 G550 G551 G552 G542 G546 G547 G548 G530 G532 G535 G537 G45 \
+ G539
+.default_input_arrival 0 0
+
+.latch        n57        G29  0
+.latch        n62        G30  0
+.latch        n67        G31  0
+.latch        n72        G32  0
+.latch        n77        G33  0
+.latch        n82        G34  0
+.latch        n87        G35  0
+.latch        n92        G36  0
+.latch        n97        G37  0
+.latch       n102        G38  0
+.latch       n107        G39  0
+.latch       n112        G40  0
+.latch       n117        G41  0
+.latch       n122        G42  0
+.latch       n127        G43  0
+.latch       n132        G44  0
+.latch       n137        G45  0
+.latch       n141        G46  0
+
+.gate INVX1   A=G12 Y=n82_1
+.gate INVX1   A=G5 Y=n83
+.gate AND2X1  A=n83 B=G4 Y=n84
+.gate INVX1   A=n84 Y=n85
+.gate INVX1   A=G3 Y=n86
+.gate NOR3X1  A=G4 B=n86 C=G0 Y=n87_1
+.gate INVX1   A=G0 Y=n88
+.gate NOR3X1  A=G3 B=G2 C=n88 Y=n89
+.gate INVX1   A=G4 Y=n90
+.gate NAND2X1 A=G5 B=G3 Y=n91
+.gate NAND2X1 A=n91 B=G4 Y=n92_1
+.gate OR2X1   A=n83 B=G1 Y=n93
+.gate NAND2X1 A=n93 B=n92_1 Y=n94
+.gate NAND2X1 A=n94 B=G2 Y=n95
+.gate AND2X1  A=n95 B=n86 Y=n96
+.gate OR2X1   A=n96 B=n88 Y=n97_1
+.gate AND2X1  A=n97_1 B=n90 Y=n98
+.gate OR2X1   A=n98 B=n89 Y=n99
+.gate AND2X1  A=n99 B=n83 Y=n100
+.gate OR2X1   A=n100 B=n87_1 Y=n101
+.gate AND2X1  A=n101 B=n85 Y=n102_1
+.gate INVX1   A=G7 Y=n103
+.gate INVX1   A=G8 Y=n104
+.gate INVX1   A=G9 Y=n105
+.gate NAND3X1 A=n105 B=n104 C=n103 Y=n106
+.gate INVX1   A=G30 Y=n107_1
+.gate NOR3X1  A=n107_1 B=n103 C=G6 Y=n108
+.gate AND2X1  A=G10 B=G8 Y=n109
+.gate NOR2X1  A=n109 B=n105 Y=n110
+.gate OR4X1   A=n110 B=n108 C=G31 D=n104 Y=n111
+.gate OR2X1   A=G30 B=G6 Y=n112_1
+.gate NAND3X1 A=n112_1 B=n111 C=n106 Y=n113
+.gate NAND2X1 A=n113 B=G11 Y=n114
+.gate OR2X1   A=G11 B=G10 Y=n115
+.gate AND2X1  A=G31 B=G8 Y=n116
+.gate OR4X1   A=n116 B=n115 C=n108 D=G9 Y=n117_1
+.gate OR2X1   A=G31 B=n104 Y=n118
+.gate INVX1   A=G10 Y=n119
+.gate OR2X1   A=n119 B=G8 Y=n120
+.gate AND2X1  A=n120 B=n118 Y=n121
+.gate OR4X1   A=n121 B=G11 C=n105 D=G7 Y=n122_1
+.gate NAND4X1 A=n122_1 B=n117_1 C=n114 D=G46 Y=n123
+.gate OR4X1   A=n123 B=n102_1 C=G13 D=n82_1 Y=n124
+.gate AND2X1  A=G4 B=G1 Y=n125
+.gate NAND2X1 A=G3 B=G0 Y=n126
+.gate NAND2X1 A=n126 B=n125 Y=n127_1
+.gate NOR2X1  A=n127_1 B=n124 Y=n128
+.gate INVX1   A=G13 Y=n129
+.gate NAND3X1 A=G11 B=G9 C=G8 Y=n130
+.gate NAND3X1 A=n130 B=G10 C=G7 Y=n131
+.gate NAND3X1 A=n119 B=G9 C=G7 Y=n132_1
+.gate NAND3X1 A=G30 B=G8 C=n103 Y=n133
+.gate NAND3X1 A=n133 B=n132_1 C=n131 Y=n134
+.gate INVX1   A=G1 Y=n135
+.gate NAND2X1 A=G6 B=G4 Y=n136
+.gate NAND2X1 A=n136 B=G3 Y=n137_1
+.gate OR2X1   A=G6 B=G4 Y=n138
+.gate NAND2X1 A=n138 B=n137_1 Y=n139
+.gate AND2X1  A=n139 B=G5 Y=n140
+.gate NOR3X1  A=G5 B=n90 C=G3 Y=n141_1
+.gate OR2X1   A=n86 B=G2 Y=n142
+.gate INVX1   A=G2 Y=n143
+.gate OR2X1   A=G3 B=n143 Y=n144
+.gate NAND3X1 A=n144 B=n142 C=n92_1 Y=n145
+.gate AND2X1  A=n145 B=G6 Y=n146
+.gate NOR3X1  A=n146 B=n141_1 C=n140 Y=n147
+.gate OR2X1   A=n147 B=n135 Y=n148
+.gate AND2X1  A=G6 B=n90 Y=n149
+.gate OR2X1   A=n149 B=G5 Y=n150
+.gate NAND3X1 A=n150 B=G2 C=n135 Y=n151
+.gate INVX1   A=G6 Y=n152
+.gate OR2X1   A=n125 B=G5 Y=n153
+.gate NAND3X1 A=n153 B=n152 C=G2 Y=n154
+.gate NAND3X1 A=n154 B=n151 C=n148 Y=n155
+.gate NAND3X1 A=n155 B=n134 C=G1 Y=n156
+.gate NAND3X1 A=G6 B=n86 C=G2 Y=n157
+.gate OR2X1   A=G6 B=n83 Y=n158
+.gate NAND3X1 A=n158 B=n157 C=n91 Y=n159
+.gate AND2X1  A=n159 B=n90 Y=n160
+.gate INVX1   A=n142 Y=n161
+.gate NOR2X1  A=n136 B=G3 Y=n162
+.gate OR2X1   A=n162 B=n161 Y=n163
+.gate AND2X1  A=n163 B=G5 Y=n164
+.gate NOR3X1  A=G5 B=n90 C=n143 Y=n165
+.gate NOR3X1  A=n165 B=n164 C=n160 Y=n166
+.gate NOR4X1  A=n166 B=n156 C=n129 D=G12 Y=n167
+.gate NOR3X1  A=G33 B=G13 C=n86 Y=n168
+.gate INVX1   A=G32 Y=n169
+.gate INVX1   A=n134 Y=n170
+.gate NOR4X1  A=n170 B=n169 C=G13 D=G12 Y=n171
+.gate INVX1   A=n171 Y=n172
+.gate AND2X1  A=G4 B=G3 Y=n173
+.gate NOR4X1  A=n173 B=n172 C=n83 D=n143 Y=n174
+.gate OR4X1   A=n174 B=n168 C=n167 D=n128 Y=G549
+.gate NOR4X1  A=n90 B=n86 C=n135 D=G0 Y=n176
+.gate NOR2X1  A=G29 B=n88 Y=n177
+.gate NOR2X1  A=n177 B=n176 Y=n178
+.gate NOR2X1  A=n178 B=n124 Y=n179
+.gate NOR2X1  A=n125 B=n83 Y=n180
+.gate NAND3X1 A=n180 B=n155 C=n134 Y=n181
+.gate NAND4X1 A=n155 B=n134 C=n125 D=n83 Y=n182
+.gate AND2X1  A=n182 B=n181 Y=n183
+.gate NOR4X1  A=n183 B=n129 C=G12 D=n143 Y=n184
+.gate AND2X1  A=G4 B=G2 Y=n185
+.gate NOR3X1  A=n185 B=n172 C=n91 Y=n186
+.gate OR4X1   A=n186 B=n184 C=n179 D=n168 Y=G550
+.gate NAND4X1 A=n185 B=n155 C=n134 D=n135 Y=n188
+.gate NAND4X1 A=n155 B=n161 C=n134 D=n125 Y=n189
+.gate AND2X1  A=n189 B=n188 Y=n190
+.gate OR2X1   A=n190 B=n83 Y=n191
+.gate INVX1   A=n162 Y=n192
+.gate OR4X1   A=n152 B=G5 C=n86 D=G2 Y=n193
+.gate NAND2X1 A=n142 B=n84 Y=n194
+.gate NAND3X1 A=n194 B=n193 C=n192 Y=n195
+.gate NAND4X1 A=n195 B=n155 C=n134 D=G1 Y=n196
+.gate NAND2X1 A=n196 B=n191 Y=n197
+.gate NAND3X1 A=n197 B=G13 C=n82_1 Y=n198
+.gate NAND3X1 A=n171 B=G39 C=G4 Y=n199
+.gate INVX1   A=n124 Y=n200
+.gate NAND2X1 A=n125 B=n88 Y=n201
+.gate AND2X1  A=G2 B=G0 Y=n202
+.gate OR2X1   A=n202 B=n135 Y=n203
+.gate NAND3X1 A=G4 B=G2 C=G0 Y=n204
+.gate AND2X1  A=n204 B=n203 Y=n205
+.gate OR2X1   A=n205 B=G3 Y=n206
+.gate OR2X1   A=n126 B=n125 Y=n207
+.gate NAND3X1 A=n207 B=n206 C=n201 Y=n208
+.gate NAND3X1 A=n208 B=n200 C=G5 Y=n209
+.gate NAND3X1 A=n209 B=n199 C=n198 Y=G551
+.gate OR2X1   A=n124 B=G40 Y=n211
+.gate OR4X1   A=n84 B=n152 C=n86 D=G2 Y=n212
+.gate AND2X1  A=G5 B=n90 Y=n213
+.gate NOR2X1  A=n213 B=n84 Y=n214
+.gate OR2X1   A=n214 B=n152 Y=n215
+.gate AND2X1  A=n215 B=n192 Y=n216
+.gate OR2X1   A=n216 B=n143 Y=n217
+.gate AND2X1  A=n217 B=n212 Y=n218
+.gate OR2X1   A=n218 B=n172 Y=n219
+.gate AND2X1  A=n155 B=n134 Y=n220
+.gate AND2X1  A=G5 B=G2 Y=n221
+.gate OR4X1   A=n221 B=n152 C=n90 D=n135 Y=n222
+.gate OR2X1   A=G4 B=G3 Y=n223
+.gate OR2X1   A=n84 B=G1 Y=n224
+.gate AND2X1  A=n224 B=n223 Y=n225
+.gate OR2X1   A=n225 B=n143 Y=n226
+.gate OR4X1   A=n83 B=G4 C=n86 D=n135 Y=n227
+.gate AND2X1  A=n227 B=n226 Y=n228
+.gate OR2X1   A=n228 B=n152 Y=n229
+.gate NAND2X1 A=n229 B=n222 Y=n230
+.gate NAND4X1 A=n230 B=n220 C=G13 D=n82_1 Y=n231
+.gate NAND3X1 A=n231 B=n219 C=n211 Y=G552
+.gate OR2X1   A=n124 B=n152 Y=n233
+.gate NAND2X1 A=G34 B=G8 Y=n234
+.gate AND2X1  A=n234 B=n233 Y=n235
+.gate NOR2X1  A=n235 B=n132_1 Y=n236
+.gate INVX1   A=G34 Y=n237
+.gate AND2X1  A=G9 B=G8 Y=n238
+.gate OR4X1   A=n238 B=n237 C=n119 D=n103 Y=n239
+.gate NAND3X1 A=G11 B=n104 C=G7 Y=n240
+.gate OR2X1   A=G11 B=n119 Y=n241
+.gate AND2X1  A=n241 B=n240 Y=n242
+.gate OR2X1   A=n242 B=G9 Y=n243
+.gate INVX1   A=n109 Y=n244
+.gate AND2X1  A=G9 B=G7 Y=n245
+.gate OR2X1   A=n245 B=n244 Y=n246
+.gate INVX1   A=G11 Y=n247
+.gate OR4X1   A=n247 B=n119 C=n105 D=G8 Y=n248
+.gate NAND3X1 A=n248 B=n246 C=n243 Y=n249
+.gate NAND3X1 A=n249 B=n200 C=G6 Y=n250
+.gate NAND2X1 A=n250 B=n239 Y=n251
+.gate OR2X1   A=n251 B=n236 Y=G542
+.gate INVX1   A=G41 Y=G546
+.gate NAND2X1 A=n109 B=n103 Y=n254
+.gate OR2X1   A=n109 B=n103 Y=n255
+.gate AND2X1  A=n255 B=n254 Y=n256
+.gate NOR3X1  A=n256 B=n237 C=n105 Y=n257
+.gate NAND2X1 A=G10 B=G7 Y=n258
+.gate NOR3X1  A=n258 B=n105 C=G6 Y=n259
+.gate OR2X1   A=n104 B=G7 Y=n260
+.gate AND2X1  A=G10 B=G9 Y=n261
+.gate AND2X1  A=G11 B=n119 Y=n262
+.gate NOR2X1  A=n262 B=n261 Y=n263
+.gate OR2X1   A=n263 B=n260 Y=n264
+.gate NAND3X1 A=n260 B=n119 C=G9 Y=n265
+.gate NAND2X1 A=G11 B=G9 Y=n266
+.gate OR2X1   A=n266 B=G8 Y=n267
+.gate NAND3X1 A=n267 B=n265 C=n264 Y=n268
+.gate AND2X1  A=n268 B=G6 Y=n269
+.gate NOR2X1  A=n269 B=n259 Y=n270
+.gate NOR2X1  A=n270 B=n124 Y=n271
+.gate OR2X1   A=n271 B=n257 Y=G547
+.gate NOR2X1  A=n124 B=G42 Y=n273
+.gate NOR3X1  A=n266 B=n109 C=n103 Y=n274
+.gate OR2X1   A=n258 B=G9 Y=n275
+.gate OR2X1   A=G10 B=n105 Y=n276
+.gate NAND3X1 A=n276 B=G8 C=n103 Y=n277
+.gate NAND2X1 A=n277 B=n275 Y=n278
+.gate AND2X1  A=n278 B=G11 Y=n279
+.gate OR2X1   A=n279 B=n274 Y=n280
+.gate AND2X1  A=n280 B=G34 Y=n281
+.gate OR2X1   A=n281 B=n273 Y=G548
+.gate AND2X1  A=G5 B=n86 Y=n283
+.gate OR2X1   A=n283 B=G4 Y=n284
+.gate NAND3X1 A=n284 B=G1 C=n88 Y=n285
+.gate AND2X1  A=G3 B=G1 Y=n286
+.gate AND2X1  A=n286 B=n83 Y=n287
+.gate NOR2X1  A=n91 B=G4 Y=n288
+.gate NOR3X1  A=n288 B=n287 C=n94 Y=n289
+.gate OR2X1   A=n289 B=n88 Y=n290
+.gate AND2X1  A=n290 B=n285 Y=n291
+.gate NOR3X1  A=n291 B=n124 C=n143 Y=n292
+.gate AND2X1  A=G36 B=n152 Y=n293
+.gate OR4X1   A=n119 B=n105 C=G8 D=G7 Y=n294
+.gate OR4X1   A=G10 B=G9 C=n104 D=n103 Y=n295
+.gate AND2X1  A=n295 B=n294 Y=n296
+.gate NAND3X1 A=G6 B=G5 C=G4 Y=n297
+.gate NOR3X1  A=n297 B=n296 C=n247 Y=n298
+.gate OR2X1   A=n298 B=n293 Y=n299
+.gate AND2X1  A=n299 B=n86 Y=n300
+.gate AND2X1  A=n300 B=n143 Y=n301
+.gate OR4X1   A=G10 B=n105 C=n104 D=G7 Y=n302
+.gate NAND3X1 A=n302 B=n295 C=n294 Y=n303
+.gate NAND3X1 A=G6 B=G4 C=G3 Y=n304
+.gate NOR4X1  A=n304 B=n247 C=G5 D=G2 Y=n305
+.gate AND2X1  A=n305 B=n303 Y=n306
+.gate NOR3X1  A=G11 B=G8 C=G7 Y=n307
+.gate INVX1   A=n307 Y=n308
+.gate OR4X1   A=n308 B=n304 C=n276 D=n83 Y=n309
+.gate OR4X1   A=n136 B=n258 C=n130 D=n91 Y=n310
+.gate NOR2X1  A=G5 B=G4 Y=n311
+.gate NAND4X1 A=n311 B=G35 C=G11 D=G3 Y=n312
+.gate NAND3X1 A=n312 B=n310 C=n309 Y=n313
+.gate AND2X1  A=n313 B=G2 Y=n314
+.gate NOR3X1  A=n314 B=n306 C=n301 Y=n315
+.gate AND2X1  A=n134 B=G32 Y=n316
+.gate OR2X1   A=n316 B=G13 Y=n317
+.gate NOR4X1  A=n317 B=n315 C=G12 D=G2 Y=n318
+.gate AND2X1  A=n318 B=n300 Y=n319
+.gate OR2X1   A=n319 B=n292 Y=G530
+.gate NOR2X1  A=n91 B=G2 Y=n321
+.gate OR2X1   A=G5 B=G3 Y=n322
+.gate OR2X1   A=n286 B=n143 Y=n323
+.gate NAND2X1 A=n323 B=n322 Y=n324
+.gate OR2X1   A=n324 B=n321 Y=n325
+.gate AND2X1  A=n325 B=G4 Y=n326
+.gate NOR4X1  A=n83 B=G3 C=G2 D=n135 Y=n327
+.gate AND2X1  A=n286 B=n90 Y=n328
+.gate NOR3X1  A=n328 B=n327 C=n326 Y=n329
+.gate NOR3X1  A=n329 B=n124 C=n88 Y=n330
+.gate NAND3X1 A=n286 B=G6 C=n90 Y=n331
+.gate OR2X1   A=n304 B=G1 Y=n332
+.gate AND2X1  A=n332 B=n331 Y=n333
+.gate NOR2X1  A=n333 B=n248 Y=n334
+.gate NOR4X1  A=n304 B=n130 C=G10 D=G1 Y=n335
+.gate OR2X1   A=n335 B=n334 Y=n336
+.gate AND2X1  A=n336 B=n103 Y=n337
+.gate NAND3X1 A=n119 B=n105 C=G7 Y=n338
+.gate OR4X1   A=n138 B=G8 C=n86 D=G1 Y=n339
+.gate OR2X1   A=n333 B=n104 Y=n340
+.gate AND2X1  A=n340 B=n339 Y=n341
+.gate NOR3X1  A=n341 B=n338 C=n247 Y=n342
+.gate OR2X1   A=n342 B=n337 Y=n343
+.gate NAND3X1 A=n343 B=n83 C=G2 Y=n344
+.gate NAND3X1 A=n307 B=n119 C=G9 Y=n345
+.gate OR2X1   A=n258 B=n130 Y=n346
+.gate AND2X1  A=n346 B=n345 Y=n347
+.gate NAND3X1 A=G5 B=G3 C=G1 Y=n348
+.gate OR4X1   A=n348 B=n347 C=n136 D=n143 Y=n349
+.gate AND2X1  A=n349 B=n344 Y=n350
+.gate OR4X1   A=n350 B=n220 C=n129 D=G1 Y=n351
+.gate OR4X1   A=n351 B=n136 C=n86 D=n143 Y=n352
+.gate OR4X1   A=n317 B=n315 C=n304 D=G2 Y=n353
+.gate AND2X1  A=n353 B=n352 Y=n354
+.gate NOR4X1  A=n354 B=n248 C=G7 D=G5 Y=n355
+.gate OR2X1   A=n317 B=n315 Y=n356
+.gate OR4X1   A=n350 B=n220 C=n129 D=n135 Y=n357
+.gate AND2X1  A=n357 B=n356 Y=n358
+.gate OR4X1   A=n296 B=n247 C=G5 D=G4 Y=n359
+.gate OR4X1   A=n308 B=n276 C=n83 D=n90 Y=n360
+.gate AND2X1  A=n360 B=n359 Y=n361
+.gate NAND2X1 A=G6 B=G3 Y=n362
+.gate NOR4X1  A=n362 B=n361 C=n358 D=n143 Y=n363
+.gate OR4X1   A=n297 B=n338 C=n247 D=n104 Y=n364
+.gate NAND3X1 A=G36 B=n152 C=n90 Y=n365
+.gate AND2X1  A=n365 B=n364 Y=n366
+.gate NOR4X1  A=n366 B=n356 C=G3 D=G2 Y=n367
+.gate INVX1   A=n220 Y=n368
+.gate NOR3X1  A=n368 B=G43 C=n129 Y=n369
+.gate OR4X1   A=n369 B=n367 C=n363 D=n355 Y=n370
+.gate AND2X1  A=n370 B=n82_1 Y=n371
+.gate OR2X1   A=n371 B=n330 Y=G532
+.gate NOR2X1  A=n123 B=n102_1 Y=n373
+.gate OR4X1   A=n119 B=G9 C=G8 D=n152 Y=n374
+.gate NOR4X1  A=n374 B=G7 C=G5 D=G3 Y=n375
+.gate NAND4X1 A=G37 B=G8 C=G5 D=G3 Y=n376
+.gate NOR3X1  A=n376 B=G10 C=n103 Y=n377
+.gate NOR2X1  A=n377 B=n375 Y=n378
+.gate NOR4X1  A=n378 B=n247 C=G4 D=G0 Y=n379
+.gate NOR2X1  A=n310 B=n88 Y=n380
+.gate OR2X1   A=n380 B=n379 Y=n381
+.gate NAND3X1 A=n381 B=G2 C=G1 Y=n382
+.gate OR4X1   A=n382 B=n373 C=G13 D=n82_1 Y=n383
+.gate NAND2X1 A=G38 B=G37 Y=n384
+.gate OR4X1   A=n384 B=n383 C=n348 D=n104 Y=n385
+.gate NAND3X1 A=n119 B=G9 C=n103 Y=n386
+.gate AND2X1  A=n386 B=n338 Y=n387
+.gate NOR2X1  A=n387 B=n104 Y=n388
+.gate INVX1   A=n388 Y=n389
+.gate OR4X1   A=n389 B=n351 C=G5 D=n90 Y=n390
+.gate OR4X1   A=n358 B=n296 C=G5 D=G4 Y=n391
+.gate AND2X1  A=n391 B=n390 Y=n392
+.gate OR4X1   A=n392 B=G12 C=n152 D=n86 Y=n393
+.gate AND2X1  A=n393 B=n385 Y=n394
+.gate NOR3X1  A=n394 B=n247 C=n143 Y=n395
+.gate NOR4X1  A=n389 B=n304 C=n247 D=G5 Y=n396
+.gate NOR2X1  A=G44 B=G3 Y=n397
+.gate OR2X1   A=n397 B=n396 Y=n398
+.gate AND2X1  A=n398 B=n318 Y=n399
+.gate OR2X1   A=n399 B=n395 Y=G535
+.gate NOR4X1  A=n362 B=n338 C=G5 D=G4 Y=n401
+.gate NOR4X1  A=n136 B=n258 C=n91 D=n105 Y=n402
+.gate OR2X1   A=n402 B=n401 Y=n403
+.gate NAND2X1 A=n403 B=G8 Y=n404
+.gate OR2X1   A=n404 B=n358 Y=n405
+.gate OR4X1   A=n351 B=n304 C=n296 D=G5 Y=n406
+.gate AND2X1  A=n406 B=n405 Y=n407
+.gate OR2X1   A=n407 B=G12 Y=n408
+.gate NAND3X1 A=G38 B=n105 C=G6 Y=n409
+.gate OR4X1   A=n136 B=n258 C=n105 D=n88 Y=n410
+.gate AND2X1  A=n410 B=n409 Y=n411
+.gate OR4X1   A=n411 B=n383 C=n348 D=n104 Y=n412
+.gate AND2X1  A=n412 B=n408 Y=n413
+.gate NOR3X1  A=n413 B=n247 C=n143 Y=n414
+.gate NOR4X1  A=n258 B=n130 C=n85 D=G6 Y=n415
+.gate NOR3X1  A=n138 B=n115 C=G5 Y=n416
+.gate NOR3X1  A=n297 B=n266 C=n119 Y=n417
+.gate NOR2X1  A=n417 B=n416 Y=n418
+.gate NOR3X1  A=n418 B=G8 C=G7 Y=n419
+.gate OR2X1   A=n419 B=n415 Y=n420
+.gate AND2X1  A=n420 B=n86 Y=n421
+.gate NOR4X1  A=n304 B=n296 C=n247 D=G5 Y=n422
+.gate OR2X1   A=n422 B=n421 Y=n423
+.gate AND2X1  A=n423 B=n318 Y=n424
+.gate OR2X1   A=n424 B=n414 Y=G537
+.gate NOR3X1  A=n373 B=G13 C=n82_1 Y=n426
+.gate NAND2X1 A=n426 B=n382 Y=n427
+.gate NAND4X1 A=n350 B=n368 C=G13 D=n82_1 Y=n428
+.gate OR2X1   A=n317 B=G12 Y=n429
+.gate OR4X1   A=n429 B=n314 C=n306 D=n301 Y=n430
+.gate NAND3X1 A=n430 B=n428 C=n427 Y=G539
+.gate OR2X1   A=n142 B=n84 Y=n432
+.gate OR2X1   A=n213 B=n173 Y=n433
+.gate NAND3X1 A=n433 B=G2 C=n135 Y=n434
+.gate AND2X1  A=n434 B=n432 Y=n57
+.gate AND2X1  A=G11 B=n105 Y=n436
+.gate OR2X1   A=n436 B=G10 Y=n62
+.gate AND2X1  A=n266 B=G10 Y=n438
+.gate AND2X1  A=G11 B=n103 Y=n439
+.gate OR2X1   A=n439 B=n438 Y=n67
+.gate INVX1   A=n165 Y=n441
+.gate NAND2X1 A=n304 B=n221 Y=n442
+.gate NAND2X1 A=n150 B=n161 Y=n443
+.gate NAND3X1 A=n443 B=n442 C=n441 Y=n72
+.gate NAND3X1 A=n90 B=G1 C=G0 Y=n445
+.gate OR4X1   A=n445 B=n123 C=n102_1 D=n82_1 Y=n446
+.gate NAND4X1 A=n165 B=n134 C=G32 D=n82_1 Y=n447
+.gate AND2X1  A=n447 B=n446 Y=n77
+.gate NAND2X1 A=n155 B=G13 Y=n449
+.gate OR2X1   A=n169 B=G13 Y=n450
+.gate AND2X1  A=n450 B=n449 Y=n451
+.gate NOR3X1  A=n451 B=n170 C=G12 Y=n82
+.gate NOR3X1  A=n338 B=G8 C=G6 Y=n453
+.gate NOR2X1  A=n296 B=n152 Y=n454
+.gate OR2X1   A=n454 B=n453 Y=n87
+.gate OR4X1   A=G11 B=G10 C=G8 D=G7 Y=n456
+.gate NAND2X1 A=n456 B=n346 Y=n457
+.gate AND2X1  A=n457 B=n83 Y=n92
+.gate AND2X1  A=n105 B=G6 Y=n459
+.gate AND2X1  A=G9 B=n152 Y=n460
+.gate OR2X1   A=n460 B=n459 Y=n97
+.gate NOR4X1  A=G10 B=n103 C=G4 D=G0 Y=n102
+.gate AND2X1  A=n91 B=G2 Y=n463
+.gate OR2X1   A=n463 B=n321 Y=n107
+.gate AND2X1  A=G9 B=G6 Y=n465
+.gate NAND2X1 A=n465 B=n247 Y=n466
+.gate OR2X1   A=n107_1 B=G6 Y=n467
+.gate AND2X1  A=n467 B=n466 Y=n468
+.gate OR2X1   A=n468 B=n103 Y=n469
+.gate NAND2X1 A=G31 B=G6 Y=n470
+.gate AND2X1  A=n470 B=n469 Y=n471
+.gate OR2X1   A=n471 B=n104 Y=n472
+.gate OR4X1   A=n266 B=G10 C=n104 D=n152 Y=n473
+.gate AND2X1  A=n473 B=n472 Y=n112
+.gate NOR3X1  A=n465 B=n258 C=n124 Y=n475
+.gate NOR4X1  A=n245 B=n237 C=n119 D=n104 Y=n476
+.gate NOR3X1  A=n476 B=n475 C=n236 Y=n117
+.gate NAND4X1 A=n258 B=G11 C=G9 D=G6 Y=n478
+.gate NAND3X1 A=n276 B=G7 C=n152 Y=n479
+.gate OR2X1   A=G8 B=n103 Y=n480
+.gate NAND3X1 A=G10 B=G8 C=G6 Y=n481
+.gate AND2X1  A=n481 B=n480 Y=n482
+.gate OR2X1   A=n482 B=G9 Y=n483
+.gate AND2X1  A=n483 B=n479 Y=n484
+.gate OR2X1   A=n484 B=n247 Y=n485
+.gate AND2X1  A=n485 B=n478 Y=n122
+.gate AND2X1  A=n136 B=G5 Y=n487
+.gate AND2X1  A=n185 B=n152 Y=n488
+.gate NOR3X1  A=n152 B=G5 C=n90 Y=n489
+.gate NOR3X1  A=n489 B=n488 C=n487 Y=n490
+.gate NOR3X1  A=n490 B=n86 C=n135 Y=n491
+.gate NOR2X1  A=n151 B=n86 Y=n492
+.gate NOR4X1  A=n152 B=n86 C=G2 D=n135 Y=n493
+.gate NOR3X1  A=n493 B=n492 C=n491 Y=n127
+.gate OR4X1   A=n138 B=n258 C=n130 D=G5 Y=n495
+.gate NOR4X1  A=n115 B=G9 C=G6 D=G5 Y=n496
+.gate OR2X1   A=n496 B=n417 Y=n497
+.gate NAND3X1 A=n497 B=n104 C=n103 Y=n498
+.gate AND2X1  A=n498 B=n495 Y=n132
+.gate OR4X1   A=n350 B=n220 C=n129 D=G12 Y=n500
+.gate OR4X1   A=n315 B=n316 C=G13 D=G12 Y=n501
+.gate NAND3X1 A=n501 B=n500 C=n383 Y=n137
+.gate NAND3X1 A=n95 B=n85 C=n86 Y=n503
+.gate OR4X1   A=G5 B=n90 C=n86 D=G2 Y=n504
+.gate NAND3X1 A=n504 B=n503 C=G0 Y=n505
+.gate AND2X1  A=n505 B=n135 Y=n506
+.gate OR2X1   A=n84 B=n88 Y=n507
+.gate AND2X1  A=n507 B=G1 Y=n508
+.gate NOR3X1  A=n508 B=n91 C=n90 Y=n509
+.gate NOR3X1  A=n84 B=G3 C=n88 Y=n510
+.gate NOR3X1  A=G5 B=n86 C=G1 Y=n511
+.gate NOR3X1  A=n511 B=n510 C=n509 Y=n512
+.gate NOR3X1  A=n512 B=n94 C=n143 Y=n513
+.gate NOR3X1  A=G30 B=G10 C=G6 Y=n514
+.gate NOR2X1  A=G7 B=G6 Y=n515
+.gate NOR4X1  A=n515 B=n514 C=n513 D=n506 Y=n141
+.end
