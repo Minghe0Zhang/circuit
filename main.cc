@@ -5,7 +5,7 @@
 //  Created by thuzmh on 16/7/20.
 //  Copyrigt thuzmh, Hsiao-Lun Wang All rights reserved.
 //
-
+// This version has been uploaded on the small-white-whale's github
 #include <iostream>
 #include "circuit.h"
 #include <math.h>
