@@ -274,12 +274,12 @@ void CIRCUIT::cal_g_t_ei_id()
     cout<<"out num "<<outNum<<endl;
     cout<<"in latch "<<in_latch<<endl;
     cout<<"out latch "<<out_latch<<endl;
-        int repeat[gateNum];
+    int repeat[gateNum];
 	float phi_1_phase = big_phi_1 + small_phi_1;
 	float phi_2_phase = big_phi_2 + small_phi_2;
         for(unsigned j = 0 ;j<gateNum;j++) repeat[j] = -1;   
 	while(!visitor.empty()) visitor.pop();
-
+    cout<<"finish visitor"<<endl;
 	for( i = (int)(inNum + in_latch); i<(int)(inNum + in_latch + outNum + out_latch);i++)
 	{
 		unsigned now;
