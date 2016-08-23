@@ -193,8 +193,9 @@ void CIRCUIT::topological()
     //cout<<gateNum;
 	if(i != gateNum)
 	{   
-		cout<<"There are "<<gateNum-i<<" gates not in topo.";	
-		cout<<endl<<endl;
+		cerr<<"There are "<<gateNum-i<<" gates not in topo.";
+        exit(0);
+        
 	}	
 }
 //determine the value of D1
@@ -279,18 +280,28 @@ void CIRCUIT::cal_g_t_ei_id()
 	float phi_2_phase = big_phi_2 + small_phi_2;
         for(unsigned j = 0 ;j<gateNum;j++) repeat[j] = -1;   
 	while(!visitor.empty()) visitor.pop();
-    cout<<"finish visitor"<<endl;
+    cout<<"finish visitor's pop"<<endl;
 	for( i = (int)(inNum + in_latch); i<(int)(inNum + in_latch + outNum + out_latch);i++)
 	{
 		unsigned now;
+        int repeat2[gateNum];
+        for(unsigned j = 0 ;j<gateNum;j++) repeat2[j] = -1;
 		if(visitor.size()!=0){cerr<<"cal_get_t_eid: wrong input size"<<endl;}
-		visitor.push(i);
+		if(repeat[i] == -1)
+        {
+            visitor.push(i);
+            repeat[i]=0;
+            
+        }
         
 		while(visitor.size())//do this every level
 		{
+            //cout<<visitor.size()<<endl;
+
 			now = visitor.top();
+            cout<<gatelist[now]->name<<endl;
 			visitor.pop();
-			if(gatelist[now]->faninNum==0 || gatelist[now]->type==INPUT) { if(repeat[now]!=i){repeat[now] = i; gatelist[i]->g_t_ei_id.push_back(now);}}			
+            if(gatelist[now]->faninNum==0 || gatelist[now]->type==INPUT || gatelist[now]->type == LATCH_IN) { if(repeat[now]!=i){repeat[now] = i; gatelist[i]->g_t_ei_id.push_back(now);} continue;}
 
 			for(unsigned j = 0; j< gatelist[now]->faninNum; j++)
 			{
@@ -303,7 +314,14 @@ void CIRCUIT::cal_g_t_ei_id()
 					if(repeat[now] != i && (int)now!=i){repeat[now] = i; gatelist[i]->g_t_ei_id.push_back(now); break;}
 				}
 				else {
-					if(repeat[now] != i) visitor.push(in_of_now);
+					if(repeat[now] != i)
+                    {
+                        if(repeat[in_of_now] == -1)
+                        {
+                            visitor.push(in_of_now);
+                            repeat[in_of_now]=0;
+                        }
+                    }
 				}
 			}
 		}
