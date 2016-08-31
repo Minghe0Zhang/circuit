@@ -12,7 +12,7 @@
 #include <time.h>
 #include <string.h>
 #define window 0.3
-#define EDL 2
+#define EDL 0.5
 using namespace std;
 //mode =0 , cal constraint
 //mode =1, cal optimal value from flow

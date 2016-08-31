@@ -47,9 +47,9 @@ void CIRCUIT::gateDelay(unsigned delay_type)
     unsigned i, j, who;
     float cap;
     if(delay_type==UNIT)
-    { for(i=inNum+outNum; i<gateNum; i++) gatelist[i]->delay = gatelist[i]->delay = 1.0; }
+    { for(i=inNum+outNum; i<gateNum; i++) gatelist[i]->rise_delay = gatelist[i]->rise_delay = 1.0; }
     else if (delay_type==FANOUT)
-    { for(i=inNum+outNum; i<gateNum; i++) gatelist[i]->delay = gatelist[i]->delay = gatelist[i]->fanoutNum + gatelist[i]->fanoutNum + 10; }
+    { for(i=inNum+outNum; i<gateNum; i++) gatelist[i]->rise_delay = gatelist[i]->rise_delay = gatelist[i]->fanoutNum + gatelist[i]->fanoutNum + 10; }
     else if (delay_type==LIB || delay_type==LIB2)
     {    //cout<<"circuit:50\n"<<endl;
         for(i=1; i<=gateNum; i++)
@@ -113,8 +113,8 @@ void CIRCUIT::gateDelay(unsigned delay_type)
             //gatelist[i].delay  = int(100*libDelay(i, 0));
             //gatelist[i].delay1 = int(100*libDelay(i, 1));
             
-            gatelist[i]->delay  =libDelay(i, 0);
-            gatelist[i]->delay1 =libDelay(i, 1);
+            gatelist[i]->rise_delay  =libDelay(i, 0);
+            gatelist[i]->fall_delay =libDelay(i, 1);
             /*if(delay_type==LIB2)
              {
              if(gatelist[i].delay > gatelist[i].delay1) gatelist[i].delay1 = gatelist[i].delay;
@@ -132,13 +132,13 @@ void CIRCUIT::gateDelay(unsigned delay_type)
              default: gatelist[i].delay = 0;
              }*/	
             
-            if(gatelist[i]->delay > gatelist[i]->delay1) gatelist[i]->delay1 = gatelist[i]->delay;
-                else gatelist[i]->delay = gatelist[i]->delay1;
+            if(gatelist[i]->rise_delay > gatelist[i]->fall_delay) gatelist[i]->fall_delay = gatelist[i]->rise_delay;
+                else gatelist[i]->rise_delay = gatelist[i]->fall_delay;
             }	
         }
     for(unsigned i=0;i<inNum+outNum+out_latch+in_latch;i++){
-        gatelist[i]->delay =0;
-        gatelist[i]->delay1 =0;
+        gatelist[i]->rise_delay =0;
+        gatelist[i]->fall_delay =0;
     }
     //cout<<"delay is finish.\n";
 }
@@ -198,7 +198,7 @@ void CIRCUIT::topological()
         
 	}	
 }
-//determine the value of D1
+//determine the value of Dsv
 void CIRCUIT::forward_STA(unsigned delay_type)
 {
 	unsigned i,now;
@@ -209,7 +209,7 @@ void CIRCUIT::forward_STA(unsigned delay_type)
 	for (i = 0; i < gateNum ; i++)
 	{
 		faninNum[i] = gatelist[i]->faninNum;
-		gatelist[i] -> D1 = 0;
+		gatelist[i] -> Dsv = 0;
 	}
 	for(i = 0; i < gateNum; i++)
 	{
@@ -225,13 +225,13 @@ void CIRCUIT::forward_STA(unsigned delay_type)
 		{
 			out_gate = gatelist[now]->fanout_arr[j];
 			faninNum[out_gate]--;
-			gatelist[out_gate]->D1 = max(gatelist[out_gate]->D1,gatelist[now]->D1 + gatelist[out_gate]->delay);
+			gatelist[out_gate]->Dsv = max(gatelist[out_gate]->Dsv,gatelist[now]->Dsv + gatelist[out_gate]->rise_delay);
 			if(faninNum[out_gate]==0)
 				visitor.push(out_gate);
 		}
 	}
 }
-//determine the value of D2
+//determine the value of Dvt
 void CIRCUIT::backward_STA(unsigned delay_type)
 {
 	unsigned i,now;
@@ -242,7 +242,7 @@ void CIRCUIT::backward_STA(unsigned delay_type)
 	for (i = 0; i < gateNum ; i++)
 	{
 		fanoutNum[i] = gatelist[i]->fanoutNum;
-		gatelist[i] -> D2 = 0;
+		gatelist[i] -> Dvt = 0;
 	}
 	for(i = 0; i < gateNum; i++)
 	{
@@ -258,7 +258,7 @@ void CIRCUIT::backward_STA(unsigned delay_type)
 		{
 			in_gate = gatelist[now]->fanin_arr[j];
 			fanoutNum[in_gate]--;
-			gatelist[in_gate]->D2 = max(gatelist[in_gate]->D2,gatelist[now]->D2 + gatelist[now]->delay);
+			gatelist[in_gate]->Dvt = max(gatelist[in_gate]->Dvt,gatelist[now]->Dvt + gatelist[now]->rise_delay);
 			if(fanoutNum[in_gate]==0)
 				visitor.push(in_gate);
 		}
@@ -301,7 +301,7 @@ void CIRCUIT::cal_g_t_ei_id()
 			now = visitor.top();
             cout<<gatelist[now]->name<<endl;
 			visitor.pop();
-            if(gatelist[now]->faninNum==0 || gatelist[now]->type==INPUT || gatelist[now]->type == LATCH_IN) { if(repeat[now]!=i){repeat[now] = i; gatelist[i]->g_t_ei_id.push_back(now);} continue;}
+            if(gatelist[now]->faninNum==0 || gatelist[now]->type==INPUT || gatelist[now]->type == SLAVE_LATCH) { if(repeat[now]!=i){repeat[now] = i; gatelist[i]->g_t_ei_id.push_back(now);} continue;}
 
 			for(unsigned j = 0; j< gatelist[now]->faninNum; j++)
 			{
@@ -309,7 +309,7 @@ void CIRCUIT::cal_g_t_ei_id()
 				
               
 				//this expression remains to be checked
-				if((max(gatelist[in_of_now]->D1, phi_1_phase)+gatelist[now]->D2+gatelist[now]->delay ) >(phi_1_phase+phi_2_phase))
+				if((max(gatelist[in_of_now]->Dsv, phi_1_phase)+gatelist[now]->Dvt+gatelist[now]->rise_delay ) >(phi_1_phase+phi_2_phase))
 				{
 					if(repeat[now] != i && (int)now!=i){repeat[now] = i; gatelist[i]->g_t_ei_id.push_back(now); break;}
 				}
@@ -336,24 +336,24 @@ void CIRCUIT::retiming_reg()
 {
     for(unsigned i=inNum+in_latch+outNum+out_latch; i< gateNum ; i++)
     {
-        if(gatelist[i]->D1>big_phi_1+small_phi_2+big_phi_2)
+        if(gatelist[i]->Dsv>big_phi_1+small_phi_2+big_phi_2)
         {
-            if(gatelist[i]->D2>big_phi_1+small_phi_1+big_phi_2)
+            if(gatelist[i]->Dvt>big_phi_1+small_phi_1+big_phi_2)
                 cout<<"period error! too small, change that!"<<endl;
             else
-                gatelist[i]->retiming_type = V_ZERO;
+                gatelist[i]->region_type = V_ZERO;
         }
-        else if(gatelist[i]->D2>big_phi_1+big_phi_2+small_phi_1)
-            gatelist[i]->retiming_type = V_MINUS_ONE;
+        else if(gatelist[i]->Dvt>big_phi_1+big_phi_2+small_phi_1)
+            gatelist[i]->region_type = V_MINUS_ONE;
         else
-            gatelist[i]->retiming_type = V_RETIMING;
+            gatelist[i]->region_type = V_RETIMING;
         
     }
 	
 	for(unsigned i=0;i<inNum+in_latch;i++){
-		gatelist[i]->retiming_type = V_MINUS_ONE;
+		gatelist[i]->region_type = V_MINUS_ONE;
 	}
-	for(unsigned i=inNum+in_latch;i<outNum+out_latch+inNum+in_latch;i++){ gatelist[i]->retiming_type = V_ZERO;}
+	for(unsigned i=inNum+in_latch;i<outNum+out_latch+inNum+in_latch;i++){ gatelist[i]->region_type = V_ZERO;}
 }
 
 void CIRCUIT::create_gate_node(){
@@ -448,15 +448,15 @@ void CIRCUIT::create_psuedo_node(){
 void CIRCUIT::set_upper_lower_bound(){
     
     for(unsigned i=0;i<gatelist.size();i++){
-        if(gatelist[i]->retiming_type==V_MINUS_ONE){
+        if(gatelist[i]->region_type==V_MINUS_ONE){
             if(i<inNum+in_latch|| i>=inNum+in_latch+outNum+out_latch)create_edge( -1,gatelist[i]->gate_node_ID,hostID, 0);
             if(i>=inNum+in_latch)create_edge( 1,hostID,gatelist[i]->gate_node_ID, 0);
         }
-        else if(gatelist[i]->retiming_type==V_ZERO){
+        else if(gatelist[i]->region_type==V_ZERO){
             if(i<inNum+in_latch|| i>=inNum+in_latch+outNum+out_latch)create_edge( 0,gatelist[i]->gate_node_ID,hostID, 0);
             if(i>=inNum+in_latch)create_edge( 0,hostID        ,gatelist[i]->gate_node_ID, 0);
         }
-        else if(gatelist[i]->retiming_type==V_RETIMING){
+        else if(gatelist[i]->region_type==V_RETIMING){
             if(i<inNum+in_latch|| i>=inNum+in_latch+outNum+out_latch)create_edge( 0,gatelist[i]->gate_node_ID,hostID, 0);
             if(i>=inNum+in_latch)create_edge( 1,hostID        ,gatelist[i]->gate_node_ID, 0);
         }
@@ -471,7 +471,7 @@ void CIRCUIT::node_init(node *new_node){
     if(new_node==NULL){ cerr<<"new node should not be null"<<endl; exit(1);}
     new_node->in_degree =new_node->out_degree=0;
     new_node->fanout_node.clear(); new_node->fanin_node.clear();
-    new_node->retiming_type = V_RETIMING;
+    new_node->region_type = V_RETIMING;
     new_node->demand = 0;
 }
 

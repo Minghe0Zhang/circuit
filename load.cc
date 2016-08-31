@@ -130,7 +130,7 @@ void CIRCUIT::loadBlif(char * fileName)
 		{
 			while(buffer[i]==' ') i++;
 			while(buffer[i]!=' ') i++;
-			while(buffer[i]==' ') i++;
+			while(buffer[i]==' ') i++;// ____"nonspace" _____
 			g=0; 
 			tempg = new gate; 	ini_gate(tempg);
             tempg->type = LATCH_IN;
