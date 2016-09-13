@@ -19,7 +19,7 @@ void ini_gate(gate * tempg){
     tempg->faninName =NULL;
 	tempg->level = 0;
     tempg->faninNum =tempg->fanoutNum=0;
-    tempg->D1= tempg->D2 =  0;
+    tempg->Dsv= tempg->Dvt =  0;
     tempg->faninName = new char * [3];
     tempg->faninSize =3;
 	tempg->type= T_UN;
@@ -133,7 +133,7 @@ void CIRCUIT::loadBlif(char * fileName)
 			while(buffer[i]==' ') i++;// ____"nonspace" _____
 			g=0; 
 			tempg = new gate; 	ini_gate(tempg);
-            tempg->type = LATCH_IN;
+            tempg->type = SLAVE_LATCH;
 			tempg->name = new char[100];
 			while(!remove(buffer[i])) tempg->name[g++] = buffer[i++];
 			tempg->name[g]='\0';
@@ -180,7 +180,7 @@ void CIRCUIT::loadBlif(char * fileName)
 			while(buffer[i]==' ') i++;
 			g=0; 
 			tempg = new gate; 	ini_gate(tempg);
-            tempg->type = LATCH_OUT;
+            tempg->type = MASTER_LATCH;
 			tempg->name = new char[100];
 			while(!remove(buffer[i])) tempg->name[g++] = buffer[i++];
 			tempg->name[g]='\0';

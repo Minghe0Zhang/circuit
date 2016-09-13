@@ -39,9 +39,6 @@ int main(int argc,char * argv[]) {
     char * flow_info_name=NULL;
     char * answer_name=NULL;
 	char * circuit_name=NULL;
-    /*if(argc==3){ mode=0; constraint_name=argv[2];}
-    else if(argc==4){mode=1;flow_info_name=argv[2];answer_name=argv[3];}
-    else {cerr<<"wrong command"<<endl; exit(1);}*/
     t1 = clock();
 	
 	/*command parser*/
@@ -70,12 +67,12 @@ int main(int argc,char * argv[]) {
       if(simple_test){
 	    for(int i = 0;i<C.gateNum;i++)
 	    {
-		if(C.gatelist[i]->type==LATCH_IN||C.gatelist[i]->type==LATCH_OUT||C.gatelist[i]->type==INPUT||C.gatelist[i]->type==OUTPUT)
-		    C.gatelist[i]->delay = 0;
+		if(C.gatelist[i]->type==SLAVE_LATCH||C.gatelist[i]->type==MASTER_LATCH||C.gatelist[i]->type==INPUT||C.gatelist[i]->type==OUTPUT)
+		    C.gatelist[i]->rise_delay = 0;
 		else
-		    C.gatelist[i]->delay = 0.8;
+		    C.gatelist[i]->rise_delay = 0.8;
 	    }
-		C.gatelist[5]->delay=2;
+		C.gatelist[5]->rise_delay=2;
 	}
   
      else{  C.gateDelay(delay_type);}
@@ -89,11 +86,11 @@ int main(int argc,char * argv[]) {
         {
             cout<<"their ID is: "<<C.gatelist[C.gatelist[i]->fanin_arr[j]]->name<<endl;
         }
-        cout<<"  "<<i<<"   D1= "<<C.gatelist[i]->D1<<endl;
-        cout<<"  "<<i<<"   D2= "<<C.gatelist[i]->D2<<endl;
+        cout<<"  "<<i<<"   Dsv= "<<C.gatelist[i]->Dsv<<endl;
+        cout<<"  "<<i<<"   Dvt= "<<C.gatelist[i]->Dvt<<endl;
     }
     float max_time = 0;
-    for(unsigned i = 0; i< C.gateNum;i++){if(C.gatelist[i]->D1+C.gatelist[i]->D2 > max_time)max_time = C.gatelist[i]->D1+C.gatelist[i]->D2;}
+    for(unsigned i = 0; i< C.gateNum;i++){if(C.gatelist[i]->Dsv+C.gatelist[i]->Dvt > max_time)max_time = C.gatelist[i]->Dsv+C.gatelist[i]->Dvt;}
     if(!simple_test){
 	    float piece = max_time/(1+window_size);
 	    C.big_phi_1 = piece * window;
@@ -109,7 +106,7 @@ int main(int argc,char * argv[]) {
     C.cal_g_t_ei_id();//so slow
     for(int i = 0; i< C.gateNum;i++)
     {
-        if(C.gatelist[i]->type==OUTPUT||C.gatelist[i]->type==LATCH_OUT)
+        if(C.gatelist[i]->type==OUTPUT||C.gatelist[i]->type==MASTER_LATCH)
         {
             cout<<C.gatelist[i]->g_t_ei_id.size()<<endl;
             for (int j = 0; j < C.gatelist[i]->g_t_ei_id.size();j++)
